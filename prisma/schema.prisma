@@ -9,10 +9,14 @@ datasource db {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model client {
-  id       String  @db.Uuid
+  id       String  @id @db.Uuid
   name     String  @db.VarChar
   age      Int?    @default(0)
   isActive Boolean @default(true)
+}
 
-  @@ignore
+model posts {
+  id    String @id @db.VarChar
+  title String @db.VarChar
+  likes Int    @default(0)
 }
